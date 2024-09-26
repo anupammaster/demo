@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(22)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot Starter Data JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// MySQL Connector (or another database driver)
+	//implementation 'mysql:mysql-connector-java'
+	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.3.0'
+
+	// Spring Boot Starter Web (optional, if you need a web application)
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Spring Boot Starter Test (optional, for testing)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.32'
+
+	// Springfox Swagger UI
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
